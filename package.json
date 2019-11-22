@@ -1,0 +1,10 @@
+{
+  "name": "<name>",
+  "version": "1.0.0-rc",
+  "description": "<desc>",  "main": "index.js",
+  "scripts": {
+    "start": "<script start>"
+  },
+  "author": "imed jaberi",
+  "license": "<license type>"
+}
