@@ -1,10 +1,49 @@
 {
-  "name": "<name>",
+  "name": "cryptography-si-isamm",
   "version": "1.0.0-rc",
-  "description": "<desc>",  "main": "index.js",
+  "description": " My module that enables you to apply basic cryptography algorithms (cipher) - ISAMM. ",
+  "main": "index.js",
   "scripts": {
-    "start": "<script start>"
+    "test": "mocha",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha dist/test/*.js - - -R spec",
+    "ci": "npm run cover",
+    "postversion": "git push && git push --tags",
+    "prepublishOnly": "npm run ci",
+    "preversion": "npm run ci"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3imed-jaberi/cryptography-si-isamm.git"
+  },
+  "keywords": [
+    "crypto",
+    "cryptography",
+    "cipher",
+    "hash",
+    "encrypt",
+    "decrypt",
+    "security",
+    "IT security",
+    "sécurité informatique",
+    "si",
+    "3im",
+    "ISAMM"
+  ],
   "author": "imed jaberi",
-  "license": "<license type>"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/3imed-jaberi/cryptography-si-isamm/issues"
+  },
+  "homepage": "https://github.com/3imed-jaberi/cryptography-si-isamm#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.7",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.2.2"
+  },
+  "engines": {
+    "node": ">= 10.12.0",
+    "npm": ">= 6.9.0",
+    "yarn": ">= 1.16.0"
+  }
 }
