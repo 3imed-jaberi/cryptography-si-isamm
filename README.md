@@ -1,10 +1,13 @@
 # CRYPTOGRAPHY ISAMM
 ---
+
 [![Build Status](https://travis-ci.org/3imed-jaberi/cryptography-si-isamm.svg?branch=master)](https://travis-ci.org/3imed-jaberi/cryptography-si-isamm)
 
 [![Coverage Status](https://coveralls.io/repos/github/3imed-jaberi/cryptography-si-isamm/badge.svg?branch=master)](https://coveralls.io/github/3imed-jaberi/cryptography-si-isamm?branch=master)
 
+
 #### My module that enables you to apply basic cryptography algorithms (cipher)that are taught in our university (ISAMM).
+
 
 
 ## Installation 
