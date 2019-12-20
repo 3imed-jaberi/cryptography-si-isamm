@@ -1,6 +1,6 @@
 const { a_inverse } = require('../utils');
 const { __STRING_ALPHABET_RegExp__, __LENGTH_ALPHABET__, __MAJUS_CODE_OF_A__ } = require('../global');
-
+const { isString, isNumber, hasMaxLength } = require('../validation');
 
 
 /**
@@ -14,15 +14,19 @@ const { __STRING_ALPHABET_RegExp__, __LENGTH_ALPHABET__, __MAJUS_CODE_OF_A__ } =
  */
 const main = (message, a, b, type) => {
 
-    let CleanUpMsg = message.toUpperCase().match(__STRING_ALPHABET_RegExp__);
+    if(isString(message) && isString(type) && isNumber(a) && isNumber(b) && hasMaxLength(a,2) && hasMaxLength(b,2)){
+        let CleanUpMsg = message.toUpperCase().match(__STRING_ALPHABET_RegExp__);
 
-    if ( type.toLowerCase() === 'encrypt' ){
-        return CleanUpMsg.map( letter => String.fromCharCode(((( a * (letter.charCodeAt(0) - __MAJUS_CODE_OF_A__) )+b) % __LENGTH_ALPHABET__ ) + __MAJUS_CODE_OF_A__ )).join('');
-
-    }else if ( type.toLowerCase() === 'decrypt' ){
-        return CleanUpMsg.map( letter => String.fromCharCode(((a_inverse(a) * ((letter.charCodeAt(0) + __MAJUS_CODE_OF_A__) - b )) % __LENGTH_ALPHABET__ ) + __MAJUS_CODE_OF_A__ )).join('');
+        if ( type.toLowerCase() === 'encrypt' ){
+            return CleanUpMsg.map( letter => String.fromCharCode(((( a * (letter.charCodeAt(0) - __MAJUS_CODE_OF_A__) )+b) % __LENGTH_ALPHABET__ ) + __MAJUS_CODE_OF_A__ )).join('');
+    
+        }else if ( type.toLowerCase() === 'decrypt' ){
+            return CleanUpMsg.map( letter => String.fromCharCode(((a_inverse(a) * ((letter.charCodeAt(0) + __MAJUS_CODE_OF_A__) - b )) % __LENGTH_ALPHABET__ ) + __MAJUS_CODE_OF_A__ )).join('');
+        }else{
+            throw new Error('Your type should be `decrypt` or `encrypt` .. ')
+        }
     }else{
-        return -1;
+        throw new Error('Check you inputs .. ')
     }
 
 };

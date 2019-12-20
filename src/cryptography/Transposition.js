@@ -1,5 +1,6 @@
 const { remesureString, cleanTableByRemoveFirstColumun } = require('../utils');
 const { __STRING_ALPHABET_WITH_SPACE_RegExp__, __CONST_SEPARATOR__ } = require('../global');
+const { isString } = require('../validation');
 
 
 
@@ -88,8 +89,19 @@ const Decrypt = (message, key) => {
  * @param {string} key : key for encrypt / decrypt text .. 
  * @param {string} type : type of operation ..
  */
-const main = (message, key, type) => type.toLocaleUpperCase() === 'ENCRYPT' ? Encrypt(message, key) : Decrypt(message, key) ;
-
+const main = (message, key, type) => {
+  if(isString(message) && isString(key) && isString(type)){
+    if (type.toLocaleUpperCase() === 'ENCRYPT') {
+      return Encrypt(message, key)
+    }else if (type.toLocaleUpperCase() === 'DECRYPT') {
+      return Decrypt(message, key);
+    }else{
+      throw new Error('Your type should be `decrypt` or `encrypt` .. ');
+    }
+  }else{
+    throw new Error('Check you inputs .. ');
+  }
+}
 
 
 module.exports = main ;

@@ -1,6 +1,6 @@
 const { reformKey } = require('../utils');
 const { __STRING_ALPHABET_RegExp__, __MAJUS_CODE_OF_A__, __LENGTH_ALPHABET__  } = require('../global');
-
+const { isString } = require('../validation');
 
 
 /**
@@ -13,25 +13,29 @@ const { __STRING_ALPHABET_RegExp__, __MAJUS_CODE_OF_A__, __LENGTH_ALPHABET__  } 
  */
 const main = (message, key, type) => {
 
-  let cleanUpMsg = message.toUpperCase().match(__STRING_ALPHABET_RegExp__);
+  if(isString(message) && isString(key) && isString(type)) {
 
-  let source = cleanUpMsg.map( letter => letter.charCodeAt(0) - __MAJUS_CODE_OF_A__);
+    let cleanUpMsg = message.toUpperCase().match(__STRING_ALPHABET_RegExp__);
+
+    let source = cleanUpMsg.map( letter => letter.charCodeAt(0) - __MAJUS_CODE_OF_A__);
+      
+    let reformTheKey= reformKey(key,source.length).toUpperCase().split("").map(letter => letter.charCodeAt(0) - __MAJUS_CODE_OF_A__);
     
-  let reformTheKey= reformKey(key,source.length).toUpperCase().split("").map(letter => letter.charCodeAt(0) - __MAJUS_CODE_OF_A__);
+    
+    if ( type.toLowerCase() === 'encrypt' ){
+      return source.map( (num,index) => String.fromCharCode((num + reformTheKey[index]) % __LENGTH_ALPHABET__ + __MAJUS_CODE_OF_A__) ).join("");
   
-  
-  if ( type.toLowerCase() === 'encrypt' ){
-    return source.map( (num,index) => String.fromCharCode((num + reformTheKey[index]) % __LENGTH_ALPHABET__ + __MAJUS_CODE_OF_A__) ).join("");
-
-  }else if ( type.toLowerCase() === 'decrypt' ){
-    return source.map( (num,index) => {
-      let charAssertDecode = num - reformTheKey[index] > 0 ? num - reformTheKey[index] : (num - reformTheKey[index])+26;
-      return String.fromCharCode( charAssertDecode % __LENGTH_ALPHABET__ + __MAJUS_CODE_OF_A__)
-    }).join("");
+    }else if ( type.toLowerCase() === 'decrypt' ){
+      return source.map( (num,index) => {
+        let charAssertDecode = num - reformTheKey[index] > 0 ? num - reformTheKey[index] : (num - reformTheKey[index])+26;
+        return String.fromCharCode( charAssertDecode % __LENGTH_ALPHABET__ + __MAJUS_CODE_OF_A__)
+      }).join("");
+    }else{
+      throw new Error('Your type should be `decrypt` or `encrypt` .. ')
+    }
   }else{
-    return -1;
+    throw new Error('Check you inputs .. ');
   }
- 
 };
 
 
