@@ -1,6 +1,6 @@
 {
   "name": "cryptography-isamm",
-  "version": "1.0.0-rc",
+  "version": "1.0.0",
   "description": " My module that enables you to apply basic cryptography algorithms (cipher) - ISAMM. ",
   "main": "index.js",
   "scripts": {
