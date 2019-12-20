@@ -9,6 +9,7 @@ const { __STRING_ALPHABET_RegExp__, __MAJUS_CODE_OF_A__, __LENGTH_ALPHABET__  } 
  * 
  * @param {string} message : The text you want to encrypt / decrypt .. 
  * @param {string} key : key for encrypt / decrypt text ..  
+ * @param {string} type : type of operation ..
  */
 const main = (message, key, type) => {
 
