@@ -12,5 +12,4 @@ module.exports = {
   __CONST_SEPARATOR__,
   __LENGTH_ALPHABET__,
   __MAJUS_CODE_OF_A__
-  
 };
