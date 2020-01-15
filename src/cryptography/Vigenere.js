@@ -5,8 +5,11 @@ const {
   __MAJUS_CODE_OF_A__, 
   __LENGTH_ALPHABET__,
   __ENCRYPT__,
-  __DECRYPT__
+  __DECRYPT__,
+  __ERROR_OPERATION__,
+  __ERROR_INPUT__
 } = require('../global');
+
 
 
 /**
@@ -37,11 +40,11 @@ const main = (message, key, type) => {
                }).join('');
       } 
       default: {
-        throw new Error('Your type should be `decrypt` or `encrypt` .. ');
+        throw new Error(__ERROR_OPERATION__);
       }
     }
   }else{
-    throw new Error('Check you inputs .. ');
+    throw new Error(__ERROR_INPUT__);
   }
 };
 

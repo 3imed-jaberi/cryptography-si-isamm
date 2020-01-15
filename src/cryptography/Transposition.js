@@ -4,8 +4,11 @@ const {
   __STRING_ALPHABET_WITH_SPACE_RegExp__, 
   __CONST_SEPARATOR__,
   __DECRYPT__,
-  __ENCRYPT__
+  __ENCRYPT__,
+  __ERROR_OPERATION__,
+  __ERROR_INPUT__
 } = require('../global');
+
 
 
 
@@ -98,11 +101,11 @@ const main = (message, key, type) => {
         return Decrypt(message, key);
       }
       default: {
-        throw new Error('Your type should be `decrypt` or `encrypt` .. ');
+        throw new Error(__ERROR_OPERATION__);
       }
     }
   }else{
-    throw new Error('Check you inputs .. ');
+    throw new Error(__ERROR_INPUT__);
   }
 }
 

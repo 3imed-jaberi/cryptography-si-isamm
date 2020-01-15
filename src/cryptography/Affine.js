@@ -4,9 +4,12 @@ const {
     __LENGTH_ALPHABET__,
     __MAJUS_CODE_OF_A__,
     __ENCRYPT__,
-    __DECRYPT__
+    __DECRYPT__,
+    __ERROR_INPUT__,
+    __ERROR_OPERATION__
 } = require('../global');
 const { isString, isNumber, hasMaxLength } = require('../validation');
+
 
 
 
@@ -31,11 +34,11 @@ const main = (message, a, b, type) => {
         return CleanUpMsg.map( letter => String.fromCharCode(((a_inverse(a) * ((letter.charCodeAt(0) + __MAJUS_CODE_OF_A__) - b )) % __LENGTH_ALPHABET__ ) + __MAJUS_CODE_OF_A__ )).join('');    
       }    
       default: {
-        throw new Error('Your type should be `decrypt` or `encrypt` .. ');
+        throw new Error(__ERROR_OPERATION__);
       }
     }
   }else{
-    throw new Error('Check you inputs .. ');
+    throw new Error(__ERROR_INPUT__);
   }
 };
 
