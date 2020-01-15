@@ -5,6 +5,8 @@ const __LENGTH_ALPHABET__ = 26;
 const __MAJUS_CODE_OF_A__ = 65;
 const __DECRYPT__ = 'decrypt';
 const __ENCRYPT__ = 'encrypt';
+const __ERROR_OPERATION__ = 'Your type should be `decrypt` or `encrypt` .. ';
+const __ERROR_INPUT__ = 'Check you inputs .. ';
 
 
 
@@ -15,5 +17,7 @@ module.exports = {
   __LENGTH_ALPHABET__,
   __MAJUS_CODE_OF_A__,
   __DECRYPT__,
-  __ENCRYPT__
+  __ENCRYPT__,
+  __ERROR_OPERATION__,
+  __ERROR_INPUT__
 };
