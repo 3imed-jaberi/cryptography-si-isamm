@@ -11,11 +11,10 @@ const { isString, isNumber, hasMaxLength } = require('../validation');
  * 
  * Encryption / Decryption using the Cesar algorithm 👱🏼 .. 
  * 
- * @param {string} message : The text you want to encrypt / decrypt .. 
- * @param {number} key : key for encrypt / decrypt text ..  
+ * @param {string} message: The text you want to encrypt / decrypt .. 
+ * @param {number} key: key for encrypt / decrypt text ..  
  */
-const main = (message, key) => {  
-
+const main = (message, key) => {
   if(isString(message) && isNumber(key) && hasMaxLength(key,2)){
     return message.toUpperCase().match(__STRING_ALPHABET_RegExp__).map( letter => String.fromCharCode((((letter.charCodeAt(0) - __MAJUS_CODE_OF_A__) + key) % __LENGTH_ALPHABET__ ) + __MAJUS_CODE_OF_A__ )).join('');
   }else{
@@ -23,4 +22,5 @@ const main = (message, key) => {
   }
 }
 
-module.exports = main ;
+
+module.exports = main;
